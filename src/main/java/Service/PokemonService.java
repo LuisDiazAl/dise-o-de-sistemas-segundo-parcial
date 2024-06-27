@@ -1,5 +1,6 @@
 package Service;
 
+import Controller.Pokemon;
 import Repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PokemonService {
+public class PokemonService{
 
     @Autowired
     private PokemonRepository pokemonRepository;
@@ -30,7 +31,16 @@ public class PokemonService {
         Pokemon atacado = pokemonRepository.findById(pokemonIdAtacado).orElse(null);
 
         if (atacante != null && atacado != null) {
-            // Lógica de ataque aquí
+            int damage = calcularDanio(atacante.getPoder());
+
+            atacado.restarVida(damage);
+
+            pokemonRepository.save(atacado);
         }
     }
+
+    private int calcularDanio(int poder) {
+        return poder;
+    }
+
 }

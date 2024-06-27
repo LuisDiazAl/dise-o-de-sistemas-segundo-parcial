@@ -1,12 +1,12 @@
-import Controller.EntrenadorController;
+package Controller;
+
 import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
-
-import javax.persistence.*;
 
 @Entity
 public class Pokemon {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -64,5 +64,18 @@ public class Pokemon {
         this.poder = poder;
     }
 
-    // Getters y setters omitidos para brevedad
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void restarVida(int damage) {
+    }
+
+    public void setEntrenador(EntrenadorController entrenador) {
+    }
+
 }

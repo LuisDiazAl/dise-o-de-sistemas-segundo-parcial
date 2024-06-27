@@ -1,6 +1,7 @@
 package Service;
 
 import Controller.EntrenadorController;
+import Controller.Pokemon;
 import Repository.EntrenadorRepository;
 import Repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,8 +2,8 @@ package Controller;
 
 import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -73,4 +73,7 @@ public class EntrenadorController {
         this.edad = edad;
     }
 
+    public Collection<Object> getPokemons() {
+        return null;
+    }
 }
