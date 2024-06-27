@@ -1,11 +1,11 @@
 package Repository;
 
-import Controller.Entrenador;
+import Controller.EntrenadorController;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface EntrenadorRepository extends JpaRepository<Entrenador, Long> {
+public interface EntrenadorRepository extends JpaRepository<EntrenadorController, Long> {
 
-     List<Entrenador> findByNombreContainingIgnoreCase(String nombre);
+     List<EntrenadorController> findByNombreContainingIgnoreCase(String nombre);
 }

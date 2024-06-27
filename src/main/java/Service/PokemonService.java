@@ -39,12 +39,6 @@ public class PokemonService{
         }
     }
 
-
-    //Faltan estos metodos que son parte del enunciado
-
-    //void restarVida(Float cant);
-    //void aumentarVida(Float vida);
-
     private int calcularDanio(int poder) {
         return poder;
     }

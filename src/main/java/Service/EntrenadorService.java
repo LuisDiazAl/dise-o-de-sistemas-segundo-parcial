@@ -1,6 +1,6 @@
 package Service;
 
-import Controller.Entrenador;
+import Controller.EntrenadorController;
 import Controller.Pokemon;
 import Repository.EntrenadorRepository;
 import Repository.PokemonRepository;
@@ -19,50 +19,32 @@ public class EntrenadorService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
-    public Entrenador crearEntrenador(Entrenador entrenador) {
+    public EntrenadorController crearEntrenador(EntrenadorController entrenador) {
         return entrenadorRepository.save(entrenador);
     }
 
-    public Entrenador recuperarEntrenadorPorId(Long id) {
+    public EntrenadorController recuperarEntrenadorPorId(Long id) {
         return entrenadorRepository.findById(id).orElse(null);
     }
 
     public void capturarPokemon(Long entrenadorId, Pokemon pokemon) {
-        Entrenador entrenador = entrenadorRepository.findById(entrenadorId).orElse(null);
+        EntrenadorController entrenador = entrenadorRepository.findById(entrenadorId).orElse(null);
         if (entrenador != null && entrenador.getPokemons().size() < 5) {
             pokemon.setEntrenador(entrenador);
             pokemonRepository.save(pokemon);
         }
     }
 
-    public Entrenador enfrentarseA(Long entrenadorId, Long otroEntrenadorId) {
-        Entrenador entrenador1 = entrenadorRepository.findById(entrenadorId).orElse(null);
-        Entrenador entrenador2 = entrenadorRepository.findById(otroEntrenadorId).orElse(null);
+    public EntrenadorController enfrentarseA(Long entrenadorId, Long otroEntrenadorId) {
+        EntrenadorController entrenador1 = entrenadorRepository.findById(entrenadorId).orElse(null);
+        EntrenadorController entrenador2 = entrenadorRepository.findById(otroEntrenadorId).orElse(null);
 
-        if (entrenador1 != null && entrenador2 != null) {
-            //Crear metodos seleccionarPokemonAleatorio
-            Pokemon pokemonEntrenador1 = seleccionarPokemonAleatorio(entrenador1);
-            Pokemon pokemonEntrenador2 = seleccionarPokemonAleatorio(entrenador2);
+        // Lógica de enfrentamiento aquí
 
-            //Hay que hacer que reciba o cambiar a Static - Porque esta en un contexto non-Static un metodo static
-            PokemonService.atacarPokemon(pokemonEntrenador1.getId(), pokemonEntrenador2.getId());
-
-
-            entrenadorRepository.save(entrenador1);
-            entrenadorRepository.save(entrenador2);
-
-            return determinarGanador(entrenador1, entrenador2);
-        }
-
-        return null;
+        return null; // Devuelve el resultado del enfrentamiento
     }
 
-    //Metodo que sirva para calcular la vida de los pokemones que se enfrentaron
-    private Entrenador determinarGanador(Entrenador entrenador1, Entrenador entrenador2) {
-        return entrenador1;
-    }
-
-    public List<Entrenador> buscarEntrenadoresPorNombre(String nombre) {
+    public List<EntrenadorController> buscarEntrenadoresPorNombre(String nombre) {
         return entrenadorRepository.findByNombreContainingIgnoreCase(nombre);
     }
 }
