@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class EntrenadorController {
+public class Entrenador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +22,10 @@ public class EntrenadorController {
     @OneToMany(mappedBy = "entrenador", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Pokemon> pokemons = new ArrayList<>();
 
-    public EntrenadorController() {
+    public Entrenador() {
     }
 
-    public EntrenadorController(String nombre, String fechaNacimiento, String nacionalidad, String genero, int edad) {
+    public Entrenador(String nombre, String fechaNacimiento, String nacionalidad, String genero, int edad) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.nacionalidad = nacionalidad;

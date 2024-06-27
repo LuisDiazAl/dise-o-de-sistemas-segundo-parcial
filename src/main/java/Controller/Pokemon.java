@@ -18,19 +18,23 @@ public class Pokemon {
 
     @ManyToOne
     @JoinColumn(name = "entrenador_id")
-    private EntrenadorController entrenador;
-    
+    private Entrenador entrenador;
 
-    public Pokemon(EntrenadorController entrenador) {
+
+    public Pokemon(Entrenador entrenador) {
         this.entrenador = entrenador;
     }
 
-    public Pokemon(String tipo, String especie, float vida, int poder, EntrenadorController entrenador) {
+    public Pokemon(String tipo, String especie, float vida, int poder, Entrenador entrenador) {
         this.tipo = tipo;
         this.especie = especie;
         this.vida = vida;
         this.poder = poder;
         this.entrenador = entrenador;
+    }
+
+    public Pokemon() {
+
     }
 
     public String getTipo() {
@@ -76,7 +80,7 @@ public class Pokemon {
     public void restarVida(int damage) {
     }
 
-    public void setEntrenador(EntrenadorController entrenador) {
+    public void setEntrenador(Entrenador entrenador) {
     }
 
 }
