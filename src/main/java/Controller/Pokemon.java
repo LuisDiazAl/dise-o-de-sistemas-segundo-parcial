@@ -19,17 +19,18 @@ public class Pokemon {
     @ManyToOne
     @JoinColumn(name = "entrenador_id")
     private EntrenadorController entrenador;
+    
 
-    // Constructor, getters y setters
-
-    public Pokemon() {
+    public Pokemon(EntrenadorController entrenador) {
+        this.entrenador = entrenador;
     }
 
-    public Pokemon(String tipo, String especie, float vida, int poder) {
+    public Pokemon(String tipo, String especie, float vida, int poder, EntrenadorController entrenador) {
         this.tipo = tipo;
         this.especie = especie;
         this.vida = vida;
         this.poder = poder;
+        this.entrenador = entrenador;
     }
 
     public String getTipo() {
